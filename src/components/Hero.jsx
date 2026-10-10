@@ -20,10 +20,8 @@ function Hero() {
       </div>
 
       <div className="hero-image">
-        <img
-          src="/images/restaurant.jpg"
-          alt="Little Lemon restaurant overlooking the sea"
-        />
+        <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" 
+        alt="Delicious Mediterranean Dish" />
       </div>
 
     </section>

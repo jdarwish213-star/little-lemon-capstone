@@ -55,7 +55,7 @@ function Menu() {
               <p>{dish.description}</p>
 
               <button type="button">
-                Order Now
+               <a href="#reservations">Order Now</a> 
               </button>
 
             </div>
