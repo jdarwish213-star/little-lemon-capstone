@@ -1,29 +1,65 @@
-/* =========================
-   Main Application
-========================= */
+
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #333333;
+  background-color: #ffffff;
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button,
+a,
+input,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+}
 
 .app {
   width: 100%;
   min-height: 100vh;
-  background-color: #ffffff;
+  overflow-wrap: break-word;
 }
 
-
-/* =========================
-   Navbar
-========================= */
+/* ========================================
+   2. Navbar
+======================================== */
 
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 24px;
 
   width: 100%;
-
-  padding: 20px 8%;
+  padding: 18px clamp(20px, 8%, 120px);
 
   background-color: #ffffff;
-
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 
   position: sticky;
@@ -31,222 +67,204 @@
   z-index: 1000;
 }
 
+.navbar-logo {
+  flex-shrink: 0;
+}
 
 .navbar-logo h1 {
   margin: 0;
-
-  font-size: 28px;
+  font-size: clamp(22px, 2.2vw, 28px);
   font-weight: 700;
-
   color: #495e57;
 }
-
 
 .navbar-links {
   display: flex;
   align-items: center;
-  gap: 30px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: clamp(12px, 2vw, 30px);
 
   list-style: none;
-
   margin: 0;
   padding: 0;
 }
 
-
 .navbar-links a {
+  display: inline-block;
   text-decoration: none;
-
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
-
   color: #333333;
-
   transition: color 0.3s ease;
 }
 
-
-.navbar-links a:hover {
-  color: #f4ce14;
+.navbar-links a:hover,
+.navbar-links a:focus-visible {
+  color: #b18c00;
 }
 
-
-/* =========================
-   Hero Section
-========================= */
+/* ========================================
+   3. Hero Section
+======================================== */
 
 .hero {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   align-items: center;
+  gap: clamp(30px, 5vw, 60px);
 
   width: 100%;
-  min-height: 600px;
+  min-height: 540px;
+  padding: 70px clamp(24px, 8%, 120px);
 
   background-color: #495e57;
-
-  padding: 60px 8%;
-  gap: 50px;
 }
-
 
 .hero-content {
+  min-width: 0;
   color: #ffffff;
 }
-
 
 .hero-content h1 {
   margin: 0;
-
-  font-size: 64px;
+  font-size: clamp(42px, 5vw, 64px);
   line-height: 1.1;
-
   color: #f4ce14;
 }
 
-
 .hero-content h2 {
-  margin: 10px 0 20px;
-
-  font-size: 32px;
+  margin: 12px 0 20px;
+  font-size: clamp(24px, 3vw, 32px);
   font-weight: 500;
-
   color: #ffffff;
 }
 
-
 .hero-content p {
   max-width: 500px;
-
-  margin-bottom: 30px;
-
-  font-size: 18px;
-  line-height: 1.7;
-
+  margin: 0 0 30px;
+  font-size: clamp(16px, 1.5vw, 18px);
+  line-height: 1.8;
   color: #f5f5f5;
 }
 
-
 .hero-button {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-  padding: 14px 28px;
+  min-height: 48px;
+  padding: 13px 26px;
 
   background-color: #f4ce14;
   color: #333333;
-
   text-decoration: none;
+  text-align: center;
 
+  border: 2px solid transparent;
   border-radius: 8px;
 
-  font-size: 16px;
   font-weight: 700;
-
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease,
+    transform 0.3s ease;
 }
-
 
 .hero-button:hover {
   background-color: #ffffff;
   transform: translateY(-2px);
 }
 
+.hero-button:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 4px;
+}
+
+.hero-image {
+  width: 100%;
+  min-width: 0;
+}
 
 .hero-image img {
-  display: block;
-
   width: 100%;
-  height: 420px;
-
+  height: clamp(280px, 35vw, 420px);
   object-fit: cover;
-
+  object-position: center;
   border-radius: 18px;
 }
-/* =========================
-   About Section
-========================= */
+
+/* ========================================
+   4. About Section
+======================================== */
 
 .about {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   align-items: center;
+  gap: clamp(30px, 5vw, 60px);
 
   width: 100%;
-
-  padding: 90px 8%;
+  padding: 90px clamp(24px, 8%, 120px);
 
   background-color: #ffffff;
-
-  gap: 60px;
 }
 
-
-/* About text */
+.about-content {
+  min-width: 0;
+}
 
 .about-content h2 {
-  margin-bottom: 25px;
-
-  font-size: 42px;
-
+  margin: 0 0 25px;
+  font-size: clamp(30px, 3.5vw, 42px);
+  line-height: 1.2;
   color: #495e57;
 }
 
-
 .about-content p {
   max-width: 600px;
-
-  margin-bottom: 20px;
-
+  margin: 0 0 20px;
   font-size: 17px;
   line-height: 1.8;
-
   color: #444444;
 }
 
-
-/* About images */
-
 .about-images {
   display: grid;
-
-  grid-template-columns: 1fr 1fr;
-
-  gap: 20px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  gap: 18px;
+  min-width: 0;
 }
-
 
 .about-images img {
   width: 100%;
-  height: 350px;
-
+  height: clamp(220px, 28vw, 350px);
   object-fit: cover;
-
   border-radius: 16px;
 }
 
-
 .about-images img:first-child {
-  margin-top: 40px;
+  margin-top: 35px;
 }
-/* =========================
-   Menu Section
-========================= */
+
+/* ========================================
+   5. Menu Section
+======================================== */
 
 .menu {
   width: 100%;
-  padding: 90px 8%;
+  padding: 90px clamp(24px, 8%, 120px);
   background-color: #f7f7f7;
 }
 
 .menu-header {
-  text-align: center;
   max-width: 700px;
   margin: 0 auto 50px;
+  text-align: center;
 }
 
 .menu-header h2 {
-  margin-bottom: 15px;
-  font-size: 42px;
+  margin: 0 0 15px;
+  font-size: clamp(30px, 3.5vw, 42px);
   color: #495e57;
 }
 
@@ -259,74 +277,94 @@
 
 .menu-cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 30px;
+
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
 }
 
 .menu-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
   overflow: hidden;
+
   background-color: #ffffff;
   border-radius: 16px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  transition: transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .menu-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-5px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
 }
 
 .menu-card img {
-  display: block;
   width: 100%;
   height: 230px;
   object-fit: cover;
 }
 
 .menu-card-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
   padding: 25px;
 }
 
 .menu-card-title {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  gap: 15px;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  width: 100%;
   margin-bottom: 15px;
 }
 
 .menu-card-title h3 {
   margin: 0;
-  font-size: 22px;
+  font-size: 21px;
   color: #495e57;
 }
 
 .menu-card-title span {
   font-size: 18px;
   font-weight: 700;
-  color: #ee9972;
+  color: #b96540;
 }
 
 .menu-card-content p {
-  min-height: 80px;
-  margin-bottom: 20px;
+  flex: 1;
+  margin: 0 0 22px;
   font-size: 15px;
-  line-height: 1.6;
+  line-height: 1.7;
   color: #555555;
 }
 
 .menu-card-content button {
-  border: none;
+  min-height: 44px;
   padding: 12px 22px;
+
+  border: none;
+  border-radius: 8px;
   background-color: #f4ce14;
   color: #333333;
-  border-radius: 8px;
+
   font-size: 15px;
   font-weight: 700;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+
+  transition: background-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
 }
 
 .menu-card-content button:hover {
@@ -335,42 +373,48 @@
   transform: translateY(-2px);
 }
 
-/* =========================
-   Booking Section
-========================= */
+/* ========================================
+   6. Booking Section
+======================================== */
 
 .booking {
-  padding: 80px 8%;
-  background: #f8f5f0;
+  width: 100%;
+  padding: 80px clamp(20px, 8%, 120px);
+  background-color: #f8f5f0;
 }
 
 .booking-header {
+  max-width: 700px;
+  margin: 0 auto 40px;
   text-align: center;
-  margin-bottom: 40px;
 }
 
 .booking-header h2 {
-  font-size: 40px;
-  margin-bottom: 15px;
-  color: #333;
+  margin: 0 0 15px;
+  font-size: clamp(30px, 3.5vw, 40px);
+  line-height: 1.2;
+  color: #333333;
 }
 
 .booking-header p {
   max-width: 600px;
   margin: 0 auto;
-  color: #666;
-  line-height: 1.6;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #666666;
 }
 
-/* =========================
-   Booking Form
-========================= */
-
 .booking-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  width: 100%;
   max-width: 600px;
   margin: 0 auto;
-  padding: 35px;
-  background: white;
+  padding: clamp(22px, 4vw, 35px);
+
+  background-color: #ffffff;
   border-radius: 15px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
 }
@@ -378,144 +422,472 @@
 .form-group {
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px;
+  width: 100%;
+  min-width: 0;
+  gap: 8px;
 }
 
 .form-group label {
-  margin-bottom: 8px;
+  font-size: 15px;
   font-weight: 600;
-  color: #333;
+  color: #333333;
 }
 
 .form-group input,
 .form-group select {
+  display: block;
   width: 100%;
+  min-width: 0;
+  min-height: 46px;
   padding: 12px 14px;
-  border: 1px solid #ccc;
+
+  border: 1px solid #cccccc;
   border-radius: 8px;
-  font-size: 16px;
-  box-sizing: border-box;
+  background-color: #ffffff;
+  color: #333333;
 }
 
 .form-group input:focus,
 .form-group select:focus {
-  outline: none;
-  border-color: #f4a261;
+  outline: 2px solid #495e57;
+  outline-offset: 2px;
+  border-color: #495e57;
 }
 
-/* =========================
-   Reserve Button
-========================= */
+.form-group input:disabled,
+.form-group select:disabled {
+  cursor: not-allowed;
+  background-color: #eeeeee;
+}
 
 .booking-form button {
   width: 100%;
-  padding: 14px;
+  min-height: 48px;
+  padding: 14px 20px;
+
   border: none;
   border-radius: 8px;
-  background: #f4a261;
-  color: white;
-  font-size: 17px;
-  font-weight: 600;
+  background-color: #495e57;
+  color: #ffffff;
+
+  font-size: 16px;
+  font-weight: 700;
   cursor: pointer;
-  transition: 0.3s;
+
+  transition: background-color 0.3s ease,
+    transform 0.3s ease;
 }
 
 .booking-form button:hover {
-  background: #e76f51;
+  background-color: #35463f;
+  transform: translateY(-1px);
 }
 
-/* =========================
-   Mobile
-========================= */
-
-@media (max-width: 768px) {
-  .booking {
-    padding: 60px 5%;
-  }
-
-  .booking-header h2 {
-    font-size: 32px;
-  }
-
-  .booking-form {
-    padding: 25px;
-  }
+.booking-form button:focus-visible {
+  outline: 3px solid #f4ce14;
+  outline-offset: 3px;
 }
+
+.booking-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Validation and status messages */
+
+.booking-form .error,
+.booking-form .error-message {
+  color: #b42318;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.booking-form .success,
+.booking-form .success-message {
+  color: #276749;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ========================================
+   7. Footer
+======================================== */
 
 .footer {
-  background: #1f1f1f;
-  color: white;
-  margin-top: 60px;
+  width: 100%;
+  margin-top: 0;
+  background-color: #1f1f1f;
+  color: #ffffff;
 }
 
 .footer-container {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr);
+  gap: 45px;
+
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 50px 30px;
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 50px;
+}
+
+.footer-brand,
+.footer-links,
+.footer-contact {
+  min-width: 0;
 }
 
 .footer-brand h2 {
-  color: #f4ce14;
+  margin: 0 0 15px;
   font-size: 28px;
-  margin-bottom: 15px;
+  color: #f4ce14;
 }
 
 .footer-brand p {
-  color: #dddddd;
-  line-height: 1.7;
   max-width: 350px;
+  margin: 0;
+  color: #dddddd;
+  line-height: 1.8;
 }
 
 .footer-links,
 .footer-contact {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
 }
 
 .footer-links h3,
 .footer-contact h3 {
-  color: #f4ce14;
-  margin-bottom: 18px;
+  margin: 0 0 18px;
   font-size: 18px;
+  color: #f4ce14;
 }
 
 .footer-links a {
+  margin-bottom: 12px;
   color: #ffffff;
   text-decoration: none;
-  margin-bottom: 10px;
-  transition: 0.3s;
+  transition: color 0.3s ease;
 }
 
-.footer-links a:hover {
+.footer-links a:hover,
+.footer-links a:focus-visible {
   color: #f4ce14;
 }
 
 .footer-contact p {
+  margin: 0 0 12px;
   color: #dddddd;
-  margin-bottom: 10px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
 }
 
 .footer-bottom {
-  border-top: 1px solid #444;
-  text-align: center;
   padding: 20px;
+  border-top: 1px solid #444444;
+  text-align: center;
 }
 
 .footer-bottom p {
   margin: 0;
   color: #aaaaaa;
   font-size: 14px;
+  line-height: 1.6;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .footer-container {
-    grid-template-columns: 1fr;
+/* ========================================
+   8. Tablet Screens
+======================================== */
+
+@media (max-width: 1024px) {
+  .navbar {
+    padding-right: 5%;
+    padding-left: 5%;
+  }
+
+  .navbar-links {
+    gap: 16px;
+  }
+
+  .navbar-links a {
+    font-size: 14px;
+  }
+
+  .hero,
+  .about {
+    padding-right: 5%;
+    padding-left: 5%;
     gap: 30px;
+  }
+
+  .menu {
+    padding-right: 5%;
+    padding-left: 5%;
+  }
+
+  .menu-cards {
+    gap: 20px;
+  }
+
+  .menu-card-content {
+    padding: 20px;
+  }
+
+  .booking {
+    padding-right: 5%;
+    padding-left: 5%;
+  }
+
+  .footer-container {
+    gap: 30px;
+  }
+}
+
+/* ========================================
+   9. Small Tablets and Large Phones
+======================================== */
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+    padding: 16px 5%;
+  }
+
+  .navbar-links {
+    justify-content: center;
+    gap: 12px 20px;
+  }
+
+  .navbar-links a {
+    font-size: 14px;
+  }
+
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 30px;
+    min-height: auto;
+    padding: 55px 6%;
+  }
+
+  .hero-content {
     text-align: center;
+  }
+
+  .hero-content p {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .hero-image img {
+    height: clamp(240px, 55vw, 380px);
+  }
+
+  .about {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 35px;
+    padding: 60px 6%;
+  }
+
+  .about-content {
+    text-align: center;
+  }
+
+  .about-content p {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .about-images img {
+    height: clamp(220px, 45vw, 320px);
+  }
+
+  .about-images img:first-child {
+    margin-top: 20px;
+  }
+
+  .menu {
+    padding: 60px 6%;
+  }
+
+  .menu-header {
+    margin-bottom: 35px;
+  }
+
+  .menu-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .menu-card img {
+    height: 200px;
+  }
+
+  .booking {
+    padding: 60px 6%;
+  }
+
+  .footer-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 35px;
+    padding: 40px 6%;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ========================================
+   10. Mobile Phones
+======================================== */
+
+@media (max-width: 480px) {
+  html {
+    scroll-padding-top: 120px;
+  }
+
+  .navbar {
+    gap: 12px;
+    padding: 14px 16px;
+  }
+
+  .navbar-logo h1 {
+    font-size: 24px;
+  }
+
+  .navbar-links {
+    gap: 10px 14px;
+  }
+
+  .navbar-links a {
+    font-size: 13px;
+  }
+
+  .hero {
+    padding: 42px 20px;
+    gap: 25px;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(36px, 10vw, 46px);
+  }
+
+  .hero-content h2 {
+    font-size: 23px;
+  }
+
+  .hero-content p {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .hero-button {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .hero-image img {
+    height: 240px;
+    border-radius: 12px;
+  }
+
+  .about {
+    padding: 45px 20px;
+    gap: 25px;
+  }
+
+  .about-content h2,
+  .menu-header h2,
+  .booking-header h2 {
+    font-size: 30px;
+  }
+
+  .about-content p {
+    font-size: 16px;
+  }
+
+  .about-images {
+    gap: 12px;
+  }
+
+  .about-images img {
+    height: 200px;
+    border-radius: 12px;
+  }
+
+  .about-images img:first-child {
+    margin-top: 15px;
+  }
+
+  .menu {
+    padding: 45px 20px;
+  }
+
+  .menu-header p {
+    font-size: 16px;
+  }
+
+  .menu-cards {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  .menu-card img {
+    height: 230px;
+  }
+
+  .menu-card-content {
+    padding: 22px;
+  }
+
+  .menu-card-title h3 {
+    font-size: 20px;
+  }
+
+  .menu-card-content p {
+    font-size: 15px;
+  }
+
+  .menu-card-content button {
+    width: 100%;
+  }
+
+  .booking {
+    padding: 45px 20px;
+  }
+
+  .booking-header {
+    margin-bottom: 28px;
+  }
+
+  .booking-header p {
+    font-size: 15px;
+  }
+
+  .booking-form {
+    gap: 18px;
+    padding: 22px 18px;
+    border-radius: 12px;
+  }
+
+  .form-group input,
+  .form-group select {
+    font-size: 16px;
+  }
+
+  .footer-container {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 30px;
+    padding: 38px 22px;
+    text-align: center;
+  }
+
+  .footer-brand {
+    grid-column: auto;
   }
 
   .footer-brand p {
@@ -525,5 +897,72 @@
   .footer-links,
   .footer-contact {
     align-items: center;
+  }
+
+  .footer-brand h2 {
+    font-size: 25px;
+  }
+
+  .footer-bottom {
+    padding: 18px 15px;
+  }
+
+  .footer-bottom p {
+    font-size: 12px;
+  }
+}
+
+/* ========================================
+   11. Very Small Phones
+======================================== */
+
+@media (max-width: 360px) {
+  .navbar-links {
+    gap: 10px;
+  }
+
+  .navbar-links a {
+    font-size: 12px;
+  }
+
+  .hero,
+  .about,
+  .menu,
+  .booking {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .about-images {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .about-images img,
+  .about-images img:first-child {
+    height: 230px;
+    margin-top: 0;
+  }
+
+  .booking-form {
+    padding: 18px 14px;
+  }
+}
+
+/* ========================================
+   12. Reduced Motion Accessibility
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
